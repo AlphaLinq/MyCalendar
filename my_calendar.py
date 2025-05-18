@@ -10,6 +10,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
+
 SCOPES = ["https://www.googleapis.com/auth/calendar"]
 
 class CalendarApp:
@@ -85,7 +86,7 @@ class CalendarApp:
         for e in self.events:
             start = e["start"].get("dateTime", e["start"].get("date"))
             end = e["end"].get("dateTime", e["end"].get("date"))
-            event_date = start.split("T")[0]  # Csak a dátumot vesszük ki
+            event_date = start.split("T")[0]
 
             if event_date == selected_date:
                 # Ha van időpont, azt is megjelenítjük
@@ -99,7 +100,7 @@ class CalendarApp:
         if events_on_date:
             messagebox.showinfo("Events", "\n".join(events_on_date))
         else:
-            messagebox.showinfo("Events", "No events on this date.")
+            messagebox.showinfo("Events", "Nincs esemény erre a dátumra")
 
     def open_add_event_tab(self):
         add_event_window = tk.Toplevel(self.root)
